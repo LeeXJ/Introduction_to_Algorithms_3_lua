@@ -1,7 +1,7 @@
 -- 7.1 快速排序
 function QUICKSORT(A, p, r)
 	if p < r then
-		local q = PARTITION(A, p, r)
+		local q = PARTITION(A, p, r);
 		QUICKSORT(A, p, q-1);
 		QUICKSORT(A, q+1, r);
 	end
@@ -30,7 +30,7 @@ end
 -- 7.3 快速排序随机化版本
 function RANDOMIZED_QUICKSORT(A, p, r)
 	if p < r then
-		local q = RANDOMIZED_PARTITION(A, p, r)
+		local q = RANDOMIZED_PARTITION(A, p, r);
 		RANDOMIZED_QUICKSORT(A, p, q-1);
 		RANDOMIZED_QUICKSORT(A, q+1, r);
 	end
@@ -46,6 +46,51 @@ end
 -- 测试
 -- local A = {2,8,7,1,3,5,6,4};
 -- RANDOMIZED_QUICKSORT(A, 1, #A);
+
+-- for i=1,#A do
+-- 	print(A[i]);
+-- end
+
+-- 7_1 Hoare 全速排序
+function HOARE_QUICKSORT(A, p, r)
+	if p < r then
+		local q = HOARE_PARTITION(A, p, r);
+		-- 注意这里和普通的快速算法有区别
+		HOARE_QUICKSORT(A, p, q);
+		HOARE_QUICKSORT(A, q+1, r);
+	end
+end
+
+function HOARE_PARTITION(A, p, r)
+	local x = A[p];
+	local i = p-1;
+	local j = r+1;
+	while true do
+		repeat
+			j = j-1;
+		until A[j] <= x
+
+		repeat
+			i = i+1;
+		until A[i] >= x
+
+		print(i, j)
+		if i < j then
+			A[i], A[j] = A[j], A[i];
+			local s = "";
+			for i=1,#A do
+				s = s .. A[i];
+			end
+			print(s);
+		else
+			return j;
+		end
+	end
+end
+
+-- 测试
+-- local A = {2,8,7,1,3,5,6,4};
+-- HOARE_QUICKSORT(A, 1, #A);
 
 -- for i=1,#A do
 -- 	print(A[i]);
