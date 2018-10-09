@@ -1,4 +1,4 @@
--- 堆排序
+-- 6.1 堆排序
 function PARENT(i)
 	return math.floor(i/2);
 end
@@ -51,7 +51,7 @@ end
 -- HEAPSORT({4,1,3,2,16,9,10,14,8,7})
 -- HEAPSORT({16,14,10,8,7,9,3,2,4,1})
 
--- 最大优先级队列
+-- 6.5 最大优先级队列
 function HEAP_MAXMUM(A)
 	return A[1];
 end
