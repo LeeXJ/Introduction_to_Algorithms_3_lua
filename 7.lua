@@ -74,14 +74,8 @@ function HOARE_PARTITION(A, p, r)
 			i = i+1;
 		until A[i] >= x
 
-		print(i, j)
 		if i < j then
 			A[i], A[j] = A[j], A[i];
-			local s = "";
-			for i=1,#A do
-				s = s .. A[i];
-			end
-			print(s);
 		else
 			return j;
 		end
