@@ -51,7 +51,7 @@ end
 -- 	print(A[i]);
 -- end
 
--- 7_1 Hoare 全速排序
+-- 7_1 Hoare 快速排序
 function HOARE_QUICKSORT(A, p, r)
 	if p < r then
 		local q = HOARE_PARTITION(A, p, r);
@@ -86,6 +86,27 @@ end
 -- local A = {2,8,7,1,3,5,6,4};
 -- HOARE_QUICKSORT(A, 1, #A);
 
+-- for i=1,#A do
+-- 	print(A[i]);
+-- end
+
+-- 7_3 STOOGE快速排序
+function STOOGE_SORT(A, i, j)
+	if A[i] > A[j] then
+		A[i], A[j] = A[j], A[i];
+	end
+	if i+1 >= j then
+		return;
+	end
+	local  k = math.floor((j-i+1)/3);
+	STOOGE_SORT(A, i, j-k);
+	STOOGE_SORT(A, i+k, j);
+	STOOGE_SORT(A, i, j-k);
+end
+
+-- 测试
+-- local A = {2,8,7,1,3,5,6,4};
+-- STOOGE_SORT(A, 1, #A);
 -- for i=1,#A do
 -- 	print(A[i]);
 -- end
