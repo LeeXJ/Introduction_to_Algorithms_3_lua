@@ -305,3 +305,38 @@ end
 -- for i=1,#B do
 -- 	print(B[i]);
 -- end
+
+-- 9.1 最小值
+function MINIMUN(A)
+	local min = A[1];
+	for i=2,#A do
+		if min > A[i] then
+			min = A[i];
+		end
+	end
+	return min;
+end
+
+-- 测试
+-- local A = {78,17,39,26,72,94,21,12,23,68};
+-- print(MINIMUN(A));
+
+-- 9.2 随机选择算法(返回数组[p,r]中第i小的元素)
+function RANDOMIZED_SELECT(A,p,r,i)
+	if p == r then
+		return A[p];
+	end
+	local q = RANDOMIZED_PARTITION(A,p,r);
+	local k = q-p+1;
+	if i == k then
+		return A[q];
+	elseif i < k then
+		return RANDOMIZED_SELECT(A,p,q-1,i);
+	else
+		return RANDOMIZED_SELECT(A,q+1,r,i-k);
+	end
+end
+
+-- 测试
+-- local A = {78,17,39,26,72,94,21,12,23,68};
+-- print(RANDOMIZED_SELECT(A,1,10,3));
