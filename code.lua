@@ -340,3 +340,33 @@ end
 -- 测试
 -- local A = {78,17,39,26,72,94,21,12,23,68};
 -- print(RANDOMIZED_SELECT(A,1,10,3));
+
+-- 10.1 栈和队列
+function STACK_EMPTY(S)
+	if S.top == nil or S.top == 0 then
+		return true;
+	else
+		return false;
+	end
+end
+
+function PUSH(S,x)
+	if nil == S.top then
+		S.top = 0;
+	end
+	S.top = S.top+1;
+	S[S.top] = x;
+end
+
+function POP(S)
+	if STACK_EMPTY(S) then 
+		return nil;
+	else
+		S.top = S.top-1;
+		return S[S.top+1];
+	end
+end
+
+function ENQUEUE(Q,x)
+	
+end
