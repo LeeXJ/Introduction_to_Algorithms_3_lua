@@ -368,5 +368,30 @@ function POP(S)
 end
 
 function ENQUEUE(Q,x)
-	
+	if Q.tail == nil then
+		Q.tail = 1;
+	end
+	Q[Q.tail] = x;
+	Q.tail = Q.tail+1;
 end
+
+function DEQUEUE(Q)
+	if Q.head == nil then
+		Q.head = 1;
+	end
+	local x = Q[Q.head];
+	Q.head = Q.head+1;
+	return x;
+end
+
+-- 测试
+-- local Q = {};
+-- ENQUEUE(Q,1);
+-- ENQUEUE(Q,2);
+-- ENQUEUE(Q,3);
+-- DEQUEUE(Q);
+-- ENQUEUE(Q,4);
+-- ENQUEUE(Q,5);
+-- for i=Q.head,Q.tail-1 do
+-- 	print(Q[i]);
+-- end
