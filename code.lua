@@ -395,3 +395,52 @@ end
 -- for i=Q.head,Q.tail-1 do
 -- 	print(Q[i]);
 -- end
+
+-- 10.2 链表
+function LIST_SEARCH(L, k)
+	local x = L.head;
+	while x ~= nil and x.key ~= k do
+		x = x.next;
+	end
+	return x;
+end
+
+function LIST_INSERT(L, x)
+	if L.head ~= nil then
+		x.next = L.head;
+		L.head.prev = x;
+	else
+		x.next = nil;
+	end
+	L.head = x;
+	x.prev = nil;
+end
+
+function LIST_DELETE(L, x)
+	if x.prev ~= nil then
+		x.prev.next = x.next;
+	else
+		L.head = x.next;
+	end
+
+	if x.next ~= nil then
+		x.next.prev = x.prev;
+	end
+end
+
+-- 测试
+-- L = {};
+-- a = {["key"]=1};
+-- b = {["key"]=2};
+-- c = {["key"]=3};
+-- d = {["key"]=4};
+-- LIST_INSERT(L, a);
+-- LIST_INSERT(L, b);
+-- LIST_INSERT(L, c);
+-- LIST_INSERT(L, d);
+-- LIST_DELETE(L, b);
+-- local x = L.head;
+-- while x ~= nil do
+-- 	print(x.key);
+-- 	x = x.next;
+-- end
